@@ -1,0 +1,116 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+}
+
+#drum-machine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4em;
+  width: 70vw;
+  margin: auto;
+}
+
+#power {
+  height: 1.5em;
+  width: 1.5em;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+}
+
+#display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgrey;
+  font-size: 1.1em;
+  padding: .1em;
+  height: 2em;
+  width: 9em;
+  font-family: "Courier New", "Lucida Console", monospace;
+}
+
+#pad-and-volume {
+  display: flex;
+  gap: 1em;
+}
+
+#pad-container {
+  padding: .2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .4em;
+  width: 10em;
+}
+
+#volume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .7em;
+}
+
+.drum-pad {
+  padding: 5px;
+  font-size: 1.4em;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  color: #c49d6c;
+  border-color: #f5e0b7;
+  font-weight: bold;
+  background: radial-gradient(circle, #f9e4b7, #fbe8c2 20%, #fdeccf 40%, #fef2db 60%, #fff7e6 80%, #fffaf0 100%);
+}
+
+#volume-amount {
+  font-size: 1.4em;
+  color: #c49d6c;
+}
+
+#volume-control {
+  height: .2em;
+  width: 8em;
+  appearance: none;
+  background-color: #d1c6b1;
+  accent-color: #f5e0b7;
+}
+
+#volume-control:hover {
+  cursor: pointer;
+}
+
+#sound-changer {
+  padding: .2em .5em;
+  font-size: 1.3em;
+  background: #D2B48C;
+  color: #fdeccf;
+  border: #fdeccf solid .2em;
+  border-radius: .5em;
+}
+
+#sound-changer:hover {
+  background-color: rgba(210, 180, 140, .9);
+  cursor: pointer;
+}
+
+button {
+  outline: none;
+}
+
+.disabled {
+  background: lightgrey;
+  color: silver;
+}
