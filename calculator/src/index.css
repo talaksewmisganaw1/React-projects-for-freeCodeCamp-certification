@@ -1,0 +1,77 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: silver;
+}
+
+#calculator {
+  border: rgb(0, 0, 0, 0.6) 3px solid;
+  width: 15em;
+  padding-left: 0.4em;
+  border-radius: .8em;
+  background-color: rgba(0,0,0,.8);
+  box-shadow: 0 0 30px 20px grey;
+}
+
+.output {
+  border: grey solid 2px;
+  height: 5em;
+  margin: .4em .4em .6em 0;
+  border-radius: .6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgb(90, 90, 90);
+}
+
+.output span {
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 2em;
+  overflow: hidden;
+  padding-right: .13em;
+/*   color: rgb(204, 204, 204); */
+  color: lightblue;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em;
+}
+
+.buttons {
+  padding: 0px;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: .4em;
+  border: grey solid 1px;
+  background-color: rgba(0,0,0,0.6);
+  color: rgb(51, 133, 255);
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+#clear, #zero {
+  width: 5.3em;
+}
+
+#equals {
+  height: 5.3em;
+}
+
+
+#zero, #decimal {
+  margin-top: -2.8em;
+}
