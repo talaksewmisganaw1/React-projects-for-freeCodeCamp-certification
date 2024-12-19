@@ -1,185 +1,157 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-// const Timeleft = ({mins, secs}) => {  
-//   return (<div id="time-left">{`${mins}:${secs}`}</div>)
-// }
+import { useState, useEffect } from 'react';
 
-// const Setters = ({sessionLength, breakLength, changeBreakValue, changeSessionValue}) => {
-//   return (
-//     <div id="setter-container">
-//       <BreakSetter breakLength={breakLength} changeBreakValue={changeBreakValue} />
-//       <SessionSetter sessionLength={sessionLength} changeSessionValue={changeSessionValue} />
-//     </div>
-//   )
-// }
-
-// const BreakSetter = ({breakLength, changeBreakValue}) => {
-//   return (
-//     <div id="break-setter" className="setters">
-//       <div id="break-label">break length</div>
-//       <div className="adjust">
-//         <div id="break-length">{breakLength}</div>
-//         <div className="arrows">
-//           <i class="fa-solid fa-caret-up" id="break-increment" onClick={() => {changeBreakValue("add")}}></i>
-//           <i class="fa-solid fa-caret-down" id="break-decrement" onClick={() => {changeBreakValue("minus")}}></i>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
-
-// const SessionSetter = ({sessionLength, changeSessionValue}) => {
-//   return (
-//     <div id="session-setter" className="setters">
-//       <div id="session-label">session length</div>
-//       <div className="adjust">
-//         <div id="session-length">{sessionLength}</div>
-//         <div className="arrows">
-//           <i class="fa-solid fa-caret-up" id="session-increment" onClick={() => {changeSessionValue("add")}}></i>
-//           <i class="fa-solid fa-caret-down" id="session-decrement" onClick={() => {changeSessionValue("minus")}}></i>
-//         </div>
-//       </div>
-//   </div>
-//   )
-// }
-
-      
-// const Buttons = ({startHandler, clockState, reset}) => {
-//   return (
-//     <div id="buttons">
-//       <audio id="beep" src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/BeepSound.wav"></audio>
-//       <button id="start_stop" className="buttons" onClick={startHandler}>
-//         {clockState==="pause"? <button className="play"><i class="fa-solid fa-play"></i></button>:
-//         <button className="pause"><i class="fa-solid fa-pause"></i></button>}
-//       </button>
-//       <button id="reset" className="buttons" onClick={reset}>
-//         <i class="fa-solid fa-rotate-right"></i>
-//       </button>
-//     </div>
-//   )
-// }
-      
-      
-// const App = () => {
-//   const [mins, setMins] = React.useState(25);
-//   const [secs, setSecs] = React.useState("00");
-//   const [time, setTime] = React.useState(25*60);
-//   const [clockState, setClockState] = React.useState("pause");
-//   const [sessionType, setSessionType] = React.useState("Session");
-//   const [sessionLength, setSessionLength] = React.useState(25);
-//   const [breakLength, setBreakLength] = React.useState(5);
-//   const [icon, setIcon] = React.useState("");
-//   const [intervalSetter, setIntervalSetter] = React.useState(null);
-//   const [buttonEnabled, setButtonEnabled] = React.useState(true);
-  
-  
-//   const changeSessionValue = (value) => {
-//     if(buttonEnabled) {
-//       if(value==="add") {
-//         if(sessionLength < 60) {
-//           setSessionLength(sessionLength + 1);
-//           setMins(sessionLength + 1);
-//           setTime((sessionLength + 1)*60);
-//         }
-//       } else if(value==="minus") {
-//         if(sessionLength > 1) {
-//           if(sessionLength -1 < 10) {
-//             setMins(`0${sessionLength - 1}`);
-//           } else {
-//             setMins(sessionLength - 1);
-//           }
-//           setSessionLength(sessionLength - 1);
-//           setTime((sessionLength - 1)*60);
-//         }
-//       }
-//     }
-//   }
-  
-//   const changeBreakValue = (value) => {
-//     if(buttonEnabled) {
-//       if(value==="add") {
-//         if(breakLength < 60) {
-//           setBreakLength(breakLength + 1);
-//         }
-//       } else if(value==="minus") {
-//         if(breakLength > 1) {
-//           setBreakLength(breakLength - 1)
-//         }
-//       }
-//     }
-//   }
-  
-//   const startHandler = () => {
-//     const playPause = clockState==="pause"? "play": "pause";
-//     setClockState(playPause);
-    
-//     if(playPause === "play") {
-//       setButtonEnabled(false);
-//       let currentTime;
-//       const interval = setInterval(() => {
-//         setTime((prevTime) => {
-//           currentTime = prevTime - 1;
-//           if(currentTime > 0) {
-//             if(Math.floor(currentTime/(60)) < 10) {
-//               setMins(`0${Math.floor(currentTime/(60))}`);
-//             } else {
-//               setMins(Math.floor(currentTime/(60)));
-//             }
-            
-//             if(currentTime%60 < 10) {
-//               setSecs(`0${currentTime%60}`);
-//             } else {
-//               setSecs(currentTime%60);
-//             }
-//             console.log(Math.floor(currentTime/(60)));
-//             console.log(currentTime)
-//             return prevTime - 1;
-//           } else {
-//             const audio = document.getElementById("beep");
-//             audio.play();
-//             setTime(sessionType === "Session"? breakLength * 60: sessionLength * 60);
-//             setSessionType(sessionType === "Session"? "Break": "Session");
-//             setSecs("00");
-//           }
-//         })
-//       },1000);
-
-//       setIntervalSetter(interval);
-//     }
-
-//     if(playPause === "pause") {
-//       setButtonEnabled(true);
-//       clearInterval(intervalSetter);
-//       setIntervalSetter(null);
-//     }
-    
-//   }
-  
-//   const reset = () => {
-//     setMins(25);
-//     setSecs("00");
-//     setTime(25*60);
-//     setSessionLength(25);
-//     setBreakLength(5);
-//   }
-  
-//   return (
-//     <div id="clock">
-//       <h1>25 + 5 Clock</h1>
-//       <div id="timer-label">{sessionType}</div>
-//       <Timeleft mins={mins} secs={secs} />
-//       <Setters breakLength={breakLength} sessionLength={sessionLength} changeSessionValue={changeSessionValue} changeBreakValue={changeBreakValue}/>
-//       <Buttons startHandler={startHandler} clockState={clockState} reset={reset} />
-//     </div>
-//   )
-// }
-
- 
 const App = () => {
-  return (<h1>love </h1>)
-}
+  const [breakLength, setBreakLength] = useState(5);
+  const [sessionLength, setSessionLength] = useState(25);
+  const [timeLeft, setTimeLeft] = useState(1500);
+  const [timeType, setTimeType] = useState("SESSION");
+  const [play, setPlay] = useState(false);
+  
+  const timeout = setTimeout(() => {
+    if(timeLeft && play) {
+      setTimeLeft(timeLeft - 1);
+    }
+  }, 1000);
+  
+  const handleBreakIncrease = () => {
+    if(breakLength < 60) {
+      setBreakLength(breakLength + 1)
+    }
+  }
+  
+  const handleBreakDecrease = () => {
+    if(breakLength > 1) {
+      setBreakLength(breakLength - 1)
+    }
+  }
+  
+  const handleSessionIncrease = () => {
+    if(sessionLength < 60) {
+      setSessionLength(sessionLength + 1);
+      setTimeLeft(timeLeft + 60);
+    }
+  }
+  
+  const handleSessionDecrease = () => {
+    if(sessionLength > 1) {
+      setSessionLength(sessionLength - 1);
+      setTimeLeft(timeLeft - 60);
+    }
+  }
+  
+  const timeFormatter = () => {
+    const minutes = Math.floor(timeLeft/60);
+    const seconds = timeLeft - minutes * 60;
+    const formattedSeconds = seconds < 10 ? "0" + seconds: seconds;
+    const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+    return `${formattedMinutes}:${formattedSeconds}`;
+  }
+  
+  const handlePlay = () => {
+    clearTimeout(timeout);
+    setPlay(!play);
+  }
+  
+  const handleReset = () => {
+    clearTimeout(timeout);
+    setPlay(false);
+    setTimeLeft(1500);
+    setBreakLength(5);
+    setSessionLength(25);
+    setTimeType("SESSION");
+    const audio = document.getElementById("beep");
+    audio.pause();
+    audio.currentTime = 0;
+  }
+  
+  const resetTimer = () => {
+    const audio = document.getElementById("beep");
+    if(!timeLeft && timeType === "SESSION") {
+      setTimeLeft(breakLength * 60);
+      setTimeType("BREAK");
+      audio.play();
+      
+      setTimeout(() => {
+        audio.pause();
+        audio.currentTime = 0;
+      }, 5000)
+    }
+    if(!timeLeft && timeType === "BREAK") {
+      setTimeLeft(sessionLength * 60);
+      setTimeType("SESSION");
+      audio.play();
+      
+      setTimeout(() => {
+        audio.pause();
+        audio.currentTime = 0;
+      }, 5000)
+    }
+  }
+   
+  const clock = () => {
+    if(play) {
+      resetTimer();
+    }else {
+      clearTimeout(timeout);
+    }
+  }
+  
+  useEffect(() => {
+    clock();
+  }, [play, timeLeft])
+  
+  const title = timeType === "SESSION"? "Session": "Break";
+
+  return (
+    <div id="clock">
+      <h1>25 + 5 Clock</h1>
+      <div id="setter-container">
+        <div id="break-setter" className="setters">
+          <div id="break-label">Break Length</div>
+          <div className="adjust">
+            <div id="break-length">{breakLength}</div>
+            <div className="arrows">
+              <button disabled={play} onClick={handleBreakIncrease} id="break-increment">
+              +
+              </button>
+              <button disabled={play} onClick={handleBreakDecrease} id="break-decrement">
+              -
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="session-setter" className="setters">
+          <div id="session-label">Session Length</div>
+          <div className="adjust">
+            <div id="session-length">{sessionLength}</div>
+            <div className="arrows">
+              <button disabled={play} onClick={handleSessionIncrease} id="session-increment">
+                +
+              </button>
+              <button disabled={play} onClick={handleSessionDecrease} id="session-decrement">
+                -
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="timer-label">{title}</div>
+      <div id="time-left">{timeFormatter()}</div>
+      <div id="buttons">
+        <audio id="beep" src="https://cdn.freecodecamp.org/testable-projects-fcc/audio/BeepSound.wav"></audio>
+        <button id="start_stop" onClick={handlePlay} className="buttons">
+          {!play? <i className="fa-solid fa-play"></i>:<i className="fa-solid fa-pause"></i>}
+        </button>
+        <button id="reset" onClick={handleReset} className="buttons">
+          <i className="fa-solid fa-rotate-right"></i>
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
