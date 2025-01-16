@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&family=Dancing+Script:wght@400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --btn-color: linear-gradient(to right, rgb(198, 131, 131), rgb(221, 221, 129));
+    --bgr-color: rgba(190, 209, 210, 0.861);
+    --bgr-color2: linear-gradient(to bottom right, rgb(242, 238, 234), rgb(208, 205, 202));
+}
+
+#root {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    background-color: var(--bgr-color);
+}
+
+#quote-box::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom right, rgb(176, 174, 174), rgb(26, 26, 26));
+    z-index: -1;
+    opacity: .1;
+}
+
+#quote-box {
+    font-family: 'Playfair Display', serif; 
+    height: 80vh;
+    width: 80vh;
+    min-width: 315px;
+    background-image: var(--bgr-color2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 6rem 9rem;
+    gap: 2rem;
+    position: relative;
+    box-shadow: 40px 40px 30px rgb(75, 74, 74), 10px 10px 55px white inset, -1px -1px 4px rgb(163, 163, 163);
+    border-radius: 5px;
+    z-index: 10;
+    h1 {
+        align-self: center;
+        font-size: 3rem;
+    }
+}
+
+
+#text {
+    display: flex;
+    flex-direction: column;
+    min-height: 75%;
+    gap: 4rem;
+}
+
+
+#text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 1.3rem;
+    border: rgb(196, 205, 203) .3rem double;
+    z-index: -2;
+}
+
+#quote {
+    padding-top: .5rem;
+    font-size: 1.8rem;
+    line-height: 3rem;
+}
+
+#author {
+    font-size: 1.4rem;
+    align-self: flex-end;
+    margin-right: 4rem;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4rem;
+    a {
+        width: 2rem;
+        height: 2rem;
+        background-color: var(--bgr-color);
+        box-shadow: 0px 0px 10px rgb(116, 116, 116);
+    }
+    * {
+        cursor: pointer;   
+    }
+    
+}
+
+#tweet-quote {
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+#new-quote {
+    border: solid 1px yellow;
+    background-image: var(--btn-color);
+    padding: 5px;
+    border-radius: 9px;
+}
+
+
+@media screen and (max-width: 900px) {
+    * {
+        border: solid yellow 1px;
+    }
+
+    #quote-box {
+        height: 80vh;
+        width: 80vw;
+        padding: 2.5rem 2.5rem 4rem 2.5rem;
+    }
+
+    #text {
+        gap: 2rem;
+    }
+}
+
+
+@media screen and (max-width: 655px) {
+    #quote-box {
+        height: 80vh;
+        width: 80vw;
+        padding: 2.5rem 2.5rem 5.5rem 2.5rem;
+        h1 {
+            margin-bottom: .5rem;
+        }
+    }
+
+    #text {
+        gap: 3rem;
+    }
+
+    #quote {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+    }
+
+    #author {
+        font-size: 1.3rem;
+        margin-right: 1rem;
+    }
+
+    #buttons {
+        padding: 0 1rem 0 1rem;
+    }
+}
+
+
+@media screen and (max-height: 810px) and (orientation: portrait) {
+    #root {
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+    
+    #quote-box {
+        gap: .5rem;
+        padding-bottom: 2rem;
+        min-height: 500px;
+        h1 {
+            margin-bottom: 0;
+        }
+    }
+
+    #text {
+        gap: 1rem;
+        min-height: 0;
+        margin: 0;
+    }
+}
+
+
+@media screen and (max-height: 810px) and (orientation: landscape) {
+    #quote-box {
+        gap: .7rem;
+    }
+
+    #quote {
+        font-size: 1.5rem;
+        line-height: 2.4rem;
+        padding-bottom: 1rem;
+    }
+}
+
+@media screen and (max-height: 622px) and (orientation: landscape) {
+    #quote-box {
+        padding-left: 3.4rem;
+        padding-right: 3.4rem;
+        line-height: 2rem;
+        gap: inherit;
+        min-height: 420px;
+        h1 {
+            font-size: 2.7rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    #text {
+        gap: .5rem;
+    }
+
+    #quote {
+        font-size: 1.4rem;
+    }
+
+    #new-quote {
+        padding: 0;
+    }
+}
